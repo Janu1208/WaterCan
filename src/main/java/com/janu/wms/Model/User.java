@@ -1,4 +1,4 @@
-package com.janu.WaterCaneManagementSystem.Model;
+package com.janu.wms.Model;
 
 public class User {
 	private Integer id;

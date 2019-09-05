@@ -1,12 +1,12 @@
-package com.janu.WaterCaneManagementSystem.DAO;
+package com.janu.wms.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.janu.WaterCaneManagementSystem.Model.Stock;
-import com.janu.WaterCaneManagementSystem.Util.ConnectionUtil;
+import com.janu.wms.Model.Stock;
+import com.janu.wms.Util.ConnectionUtil;
 
 public class StockDAO {
 public static  Stock findavaiability(){

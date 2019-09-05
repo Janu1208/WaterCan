@@ -1,4 +1,4 @@
-package com.janu.WaterCaneManagementSystem.DAO;
+package com.janu.wms.DAO;
 
 
 import java.sql.Connection;
@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.janu.WaterCaneManagementSystem.Model.User;
-import com.janu.WaterCaneManagementSystem.Util.ConnectionUtil;
+import com.janu.wms.Model.User;
+import com.janu.wms.Util.ConnectionUtil;
+
 
 
 public class UserDAO {
+	public static int id;
 	static User user=new User();
 	 public void register(User user) throws Exception
 	 {
@@ -69,7 +71,7 @@ public class UserDAO {
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "select * from User_det where Name=?";
 			PreparedStatement pst;
-			int id = 0;
+			id = 0;
 			User user=null;
 			try {
 				pst = con.prepareStatement(sql);

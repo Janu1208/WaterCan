@@ -1,11 +1,11 @@
-package com.janu.WaterCaneManagementSystem.Controller;
+package com.janu.wms.Controller;
 
 import java.util.Scanner;
 
-import com.janu.WaterCaneManagementSystem.DAO.OrderDAO;
-import com.janu.WaterCaneManagementSystem.DAO.StockDAO;
-import com.janu.WaterCaneManagementSystem.Model.Stock;
-import com.janu.WaterCaneManagementSystem.Model.User;
+import com.janu.wms.DAO.OrderDAO;
+import com.janu.wms.DAO.StockDAO;
+import com.janu.wms.Model.Stock;
+import com.janu.wms.Model.User;
 
 public class OrderCan {
 	static Scanner sc=new Scanner(System.in);

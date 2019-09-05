@@ -1,10 +1,12 @@
-package com.janu.WaterCaneManagementSystem.Controller;
+package com.janu.wms.Controller;
+
+
 
 import java.util.Scanner;
 
-import com.janu.WaterCaneManagementSystem.DAO.StockDAO;
-import com.janu.WaterCaneManagementSystem.DAO.UserDAO;
-import com.janu.WaterCaneManagementSystem.Model.User;
+import com.janu.wms.DAO.StockDAO;
+import com.janu.wms.DAO.UserDAO;
+import com.janu.wms.Model.User;
 
 
 

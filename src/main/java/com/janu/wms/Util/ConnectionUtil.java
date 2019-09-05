@@ -1,4 +1,4 @@
-package com.janu.WaterCaneManagementSystem.Util;
+package com.janu.wms.Util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
