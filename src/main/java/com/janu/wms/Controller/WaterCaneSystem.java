@@ -1,20 +1,25 @@
-package com.janu.wms.Controller;
+package com.janu.wms.controller;
 
 
 
 import java.util.Scanner;
 
-import com.janu.wms.DAO.StockDAO;
-import com.janu.wms.DAO.UserDAO;
-import com.janu.wms.Model.User;
+import com.janu.wms.dao.StockDAO;
+import com.janu.wms.dao.StockDAOImp;
+import com.janu.wms.dao.UserDAO;
+import com.janu.wms.dao.UserDAOImp;
+import com.janu.wms.model.Stock;
+import com.janu.wms.model.User;
+import com.janu.wms.validator.UserValidator;
 
 
 
 
 public class WaterCaneSystem {
-	
+	static StockDAOImp sdao=new StockDAO();
+	static UserDAOImp udao=new UserDAO();
 	static Scanner sc = new Scanner(System.in);
-	static UserDAO dao = new UserDAO();
+	static Stock stock=new Stock();
 	
 	static User user=new User();
 	static String name,password;
@@ -34,10 +39,10 @@ public class WaterCaneSystem {
 		int ch = sc.nextInt();
 		switch (ch) {
 		case 1:
-              register();
+              register(); // registration process will ve done here
               break;
 		case 2:
-			  login();
+			  login(); // login process will be done here...we will have admin login and user login
 			  break;
 		case 3:
 			 System.out.println("Thank you  for choosing our services");
@@ -63,35 +68,39 @@ public class WaterCaneSystem {
 		   {
 			  do{
 			   System.out.println("Welcome Admin");
+			   System.out.println("1:View stock");
 			  
-			   System.out.println("1.Available stock");
-			   System.out.println("2.Update stock");
-			   System.out.println("3.Ordered stock");
-			   System.out.println("4.Reserved stock");
-			   System.out.println("5.Exit");
+			   System.out.println("2.Available stock");
+			   System.out.println("3.Update stock");
+			  
+			   System.out.println("4.Exit");
 		   
 			   System.out.println( "enter your choice");
 			   int ch4=sc.nextInt();
 			   switch(ch4)
 			   {
 			   case 1:
+				   //admin will get  the cans availability
+				   stock=sdao.findavaiability();
+					System.out.println("Available cans are:"+Stock.getCans_avail());
+					break;
+			   case 2:
+				  
 				   System.out.println("Set Availability of cans:");
 				   cans=sc.nextInt();
 				   System.out.println("Available cans are:"+cans);
-				   StockDAO.availStock(cans);
+				   
+				   sdao.availStock(cans); //this method is used to insert the available stock in database..
 				   break;
-			   case 2:
+			   case 3:
+				   //admin  can update stock here by adding somemore cans
 				     StockUpdate.updateStock();
 				     break;
-			   case 3:
-				   //OrderCan.orderCan(user);
-				    break;
+			  
 			   case 4:
-				   
+				     System.out.println("Thank you for choosing our services");
 				    break;
-			   case 5:
-				
-				    break;
+			  
 			   default:
 			    	 System.out.println("please choose either  1 or 2 or 3 or 4 or 5");
 			    	 break;
@@ -107,7 +116,7 @@ public class WaterCaneSystem {
 		   else{	  
 		    
 		   try {
-			User b= dao.login(name,password);
+			User b= udao.login(name,password); //dao method which will checks registered name and password in database
 			
 			if(b!=null){
 			  do{
@@ -115,29 +124,29 @@ public class WaterCaneSystem {
 				System.out.println("Login  succesfull");
 				System.out.println("Welcome to main page");
 				
-				//System.out.println("1.Available cans");
 				System.out.println("1.Order cans ");
 				System.out.println("2.Reserve Cans");
-				System.out.println("3.exit");
+				System.out.println("3.Order Reserved Cans");
+				System.out.println("4.exit");
 				
 				
 				System.out.println("enter your choice");
 				int ch2=sc.nextInt();
 				switch(ch2)
 				{
-				/*case 1:
-					  StockDAO.findavaiability();
-					  System.out.println("Available cans are"+Stock.getCans_avail());
-					  //StockDAO.availStock(cans);
-					  break;*/
 				case 1:
-					  
+					  //user can order cans
 					  OrderCan.orderCan(b);
 					  break;
 				case 2:
-					 
+					// user can reserve the cans   
+					  ReserveCan.reserveCan(b);
 					  break;
-				case 3:
+				case  3:
+					//reserved cans will get ordered according to the requirement of the user
+					OrderReserveCan.reserveCanOrder(b);
+					break;
+				case 4:
 					  System.out.println("Thank you for using our services");
 					  break;
 				default:
@@ -154,8 +163,8 @@ public class WaterCaneSystem {
 			catch (Exception e) {
             e.printStackTrace();
 		   }	
-		   user=UserDAO.getUserID(name);
-			System.out.println("Your User id is:"+user.getId());
+		   user=udao.getUserID(name);
+			System.out.println("Your User id is:"+User.getId());
 			return user;
 		   }
 		return user;		
@@ -164,20 +173,27 @@ public class WaterCaneSystem {
 		  private static void register() {
 		   try {
 		   System.out.println("Welcome to register page");
+		   
 		   System.out.println("Enter your name");
 		    name=sc.next();
-		   System.out.println("Enter your phone number");
+		   
+		    System.out.println("Enter your phone number");
 		   String phone_number=sc.next();
+		   
+		   //phone number validations
+		   UserValidator.validPhone_number(phone_number);
+		  
 		   System.out.println("Set your password");
 		    password=sc.next();
-		   
+		    //password validations
+		    UserValidator.passValid(name,password);
 	       
 	       user.setName(name);
 	       user.setPhone_number(phone_number);
 	       user.setPassword(password);
 		   
 		   
-		   dao.register(user);
+	       udao.register(user); // registered users details will insert into User_det table
 		   }
 		   catch(Exception e)
 		   {

@@ -1,4 +1,4 @@
-package com.janu.wms.DAO;
+package com.janu.wms.dao;
 
 
 import java.sql.Connection;
@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.janu.wms.Model.User;
-import com.janu.wms.Util.ConnectionUtil;
+import com.janu.wms.model.User;
+import com.janu.wms.util.ConnectionUtil;
 
 
 
-public class UserDAO {
+public class UserDAO implements UserDAOImp{
 	public static int id;
 	static User user=new User();
 	 public void register(User user) throws Exception
@@ -24,9 +24,9 @@ public class UserDAO {
 	  try {
 	   con = ConnectionUtil.getConnection();
 	   pst = con.prepareStatement(sql);
-	   pst.setString(1, user.getName());
+	   pst.setString(1, User.getName());
 	   pst.setString(2, user.getPhone_number());
-	   pst.setString(3, user.getPassword());
+	   pst.setString(3, User.getPassword());
 	   
 	   int rows = pst.executeUpdate();
 	   System.out.println("No of rows inserted:" + rows);
@@ -66,7 +66,7 @@ public class UserDAO {
 }
 	 
 	 
-	 public static User getUserID(String name) {
+	 public  User getUserID(String name) {
 
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "select * from User_det where Name=?";
@@ -80,9 +80,9 @@ public class UserDAO {
 	            if (rs.next()) {
 					
 					user = new User();
-					user.setId(rs.getInt("User_id"));
+					user.setId(rs.getInt("id"));
 					user.setName(rs.getString("name"));
-					user.setPhone_number(rs.getString("phone_number"));
+					user.setPhone_number(rs.getString("Mobile_number"));
 					user.setPassword(rs.getString("Password"));
 					
 					

@@ -1,7 +1,8 @@
-package com.janu.wms.Util;
+package com.janu.wms.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
@@ -29,4 +30,18 @@ public class ConnectionUtil {
 
 		  return con;
 		 }
+	public static void close(Connection con, PreparedStatement pst) {
+
+		try {
+			if (pst != null) pst.close();
+			if (con != null) con.close();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		
+	}
+	
+	
 }

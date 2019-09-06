@@ -1,12 +1,12 @@
-package com.janu.wms.Model;
+package com.janu.wms.model;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 public class Stock{
 	
 	private static Integer cans_avail;
 	
-	private LocalDateTime createdDate;
+	//private LocalDateTime createdDate;
 	
 	
 
@@ -17,21 +17,17 @@ public class Stock{
 	}
 	
 	public void setCans_avail(Integer cans_avail) {
-		this.cans_avail = cans_avail;
+		Stock.cans_avail = cans_avail;
 	}
 	
 	
-	public LocalDateTime getCreatedDate() {
+	/*public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 	
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
-	}
-	@Override
-	public String toString() {
-		return "Stock [ canes_avail=" + cans_avail + ", createdDate="
-				+ createdDate + "]";
-	}
+	}*/
+	
 
 }

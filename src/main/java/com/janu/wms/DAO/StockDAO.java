@@ -1,19 +1,19 @@
-package com.janu.wms.DAO;
+package com.janu.wms.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.janu.wms.Model.Stock;
-import com.janu.wms.Util.ConnectionUtil;
+import com.janu.wms.model.Stock;
+import com.janu.wms.util.ConnectionUtil;
 
-public class StockDAO {
-public static  Stock findavaiability(){
+public class StockDAO implements StockDAOImp {
+public  Stock findavaiability(){
 		
 		Connection con = ConnectionUtil.getConnection();
 		String sql = "select * from stock";
-		PreparedStatement pst;
+		PreparedStatement pst = null;
 		Stock stock=null;
 		try {
 			pst = con.prepareStatement(sql);
@@ -26,9 +26,12 @@ public static  Stock findavaiability(){
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			ConnectionUtil.close(con, pst);
+		}
 		return stock;
 	}
-	 public static void  availStock(int cans) throws Exception
+	 public void  availStock(int cans) throws Exception
 	 {
 		 Connection con=null;
 		  PreparedStatement pst = null;
@@ -45,13 +48,16 @@ public static  Stock findavaiability(){
 		   e.printStackTrace();
 		   throw new Exception("Unable to insert " , e);
 		  }
+		  finally {
+				ConnectionUtil.close(con, pst);
+			}
 	 }
 	 
-	 public static void updateStock(int cans) {
+	 public void updateStock(int cans) {
 			
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "update stock set cans_avail=? ";
-			PreparedStatement pst;
+			PreparedStatement pst = null;
 			try {
 				pst = con.prepareStatement(sql);
 				pst.setInt(1,cans);
@@ -61,7 +67,9 @@ public static  Stock findavaiability(){
 				e.printStackTrace();
 			}
 			
-			
+			finally {
+				ConnectionUtil.close(con, pst);
+			}
 			
 		}
 	 

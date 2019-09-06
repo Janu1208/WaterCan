@@ -1,20 +1,24 @@
-package com.janu.wms.Controller;
+package com.janu.wms.controller;
 
 import java.util.Scanner;
 
-import com.janu.wms.DAO.OrderDAO;
-import com.janu.wms.DAO.StockDAO;
-import com.janu.wms.Model.Stock;
-import com.janu.wms.Model.User;
+import com.janu.wms.dao.OrderDAO;
+import com.janu.wms.dao.OrderDAOImp;
+import com.janu.wms.dao.StockDAO;
+import com.janu.wms.dao.StockDAOImp;
+import com.janu.wms.model.Stock;
+import com.janu.wms.model.User;
 
 public class OrderCan {
 	static Scanner sc=new Scanner(System.in);
 	static Stock stock=new Stock();
+	static StockDAOImp sdao=new StockDAO();
+	static OrderDAOImp odao=new OrderDAO();
 public static void orderCan(User user)
 {
 	
 	
-	stock=StockDAO.findavaiability();
+	stock=sdao.findavaiability();
 	System.out.println("Available cans are:"+Stock.getCans_avail());
 	
 	
@@ -29,11 +33,11 @@ public static void orderCan(User user)
 		}
 	
 	
-		OrderDAO.addOrder(user,cansOrder);
+	odao.addOrder(user,cansOrder);
 		
 		int updateCans=Stock.getCans_avail()-cansOrder;
 		
-		StockDAO.updateStock(updateCans);
+		sdao.updateStock(updateCans);
 		System.out.println("ORDERED SUCCESSFULY");
 		
 	

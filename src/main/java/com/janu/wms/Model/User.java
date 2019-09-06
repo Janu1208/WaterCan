@@ -1,11 +1,41 @@
-package com.janu.wms.Model;
+package com.janu.wms.model;
 
 public class User {
-	private Integer id;
-	private String name;
+	private static int id;
+	private static String name;
 	private String phone_number;
-	private String password;
-	private Integer cans_avail;
+	private static String password;
+	private int cans_avail;
+	private int reserve_id;
+	private String status;
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public int getReserve_id() {
+		return reserve_id;
+	}
+
+	
+	public void setReserve_id(int reserve_id) {
+		this.reserve_id = reserve_id;
+	}
+
+	
+	
+	
+	
+
+	
 	
 	
 	
@@ -23,29 +53,26 @@ public class User {
 		this.phone_number = phone_number;
 	}
 
-	public Integer getId() {
+	public static Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
-		this.id = id;
+		User.id = id;
 	}
-	public String getName() {
+	public static String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		User.name = name;
 	}
 	
-	public String getPassword() {
+	public static String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		User.password = password;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", phone_number=" + phone_number + ", password=" + password  + "]";
-	}
+
 	
 }
