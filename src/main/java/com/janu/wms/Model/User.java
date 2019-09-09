@@ -6,7 +6,7 @@ public class User {
 	private String phone_number;
 	private static String password;
 	private int cans_avail;
-	private int reserve_id;
+	private static int reserve_id;
 	private String status;
 	
 	
@@ -21,7 +21,7 @@ public class User {
 	}
 
 
-	public int getReserve_id() {
+	public static int getReserve_id() {
 		return reserve_id;
 	}
 

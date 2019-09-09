@@ -79,17 +79,49 @@ public class ReserveDAO implements ReserveDAOImp{
 		return user;
 	}
 	
-   public void updateStatus(User user)
+   public void updateStatus(User user,int reserve_cans)
    {
-		Connection con = ConnectionUtil.getConnection();
-
-		String sql="update reserve set status='Ordered' where reserve_id=?";
-		PreparedStatement pst = null;
-		try
-		{
+	   Connection con =null;
+	    PreparedStatement pst = null;
+		con = ConnectionUtil.getConnection();
+		String sql = "update reserve set status ='Ordered',reserve_cans=? where reserve_id= ?";
+		try {
 			pst = con.prepareStatement(sql);
-            pst.setInt(1,user.getReserve_id());
-            pst.executeUpdate();
+			pst.setInt(1,reserve_cans);
+			pst.setInt(2,User.getReserve_id());
+			
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		finally {
+			ConnectionUtil.close(con, pst);
+		}
+	}
+   
+   public User findById(int id) {
+		
+		Connection con =null;
+		PreparedStatement pst = null;
+	    con = ConnectionUtil.getConnection();
+		String sql = "select * from reserve where User_id=? and status='Order Pending' ";
+		User user=null;
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setInt(1,id);
+			ResultSet rs = pst.executeQuery();
+		
+			if(rs.next()) {
+			    user = new User();
+				user.setReserve_id(rs.getInt("reserve_id"));
+				user.setName(rs.getString("User_name"));
+				user.setId(rs.getInt("user_id"));
+				user.setCans_avail(rs.getInt("reserve_cans"));
+			
+				
+			}
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -97,5 +129,9 @@ public class ReserveDAO implements ReserveDAOImp{
 		finally {
 			ConnectionUtil.close(con, pst);
 		}
-   }
+		
+		return user;
+	}
+
+
 }

@@ -1,10 +1,14 @@
 package com.janu.wms.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.janu.wms.exception.DBException;
 import com.janu.wms.model.Stock;
 import com.janu.wms.util.ConnectionUtil;
 
@@ -22,6 +26,8 @@ public  Stock findavaiability(){
 				
 				stock = new Stock();
 				stock.setCans_avail(rs.getInt("cans_avail"));
+				Date date = rs.getDate("date");
+				stock.setDate(date.toLocalDate());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -31,6 +37,34 @@ public  Stock findavaiability(){
 		}
 		return stock;
 	}
+public List<Stock> viewStock() throws DBException{
+	
+	Connection con =null;
+	PreparedStatement pst = null;
+	List<Stock> list = new ArrayList<Stock>();
+	try {
+		con = ConnectionUtil.getConnection();
+		String sql = "select * from stockdetails";
+		pst = con.prepareStatement(sql);
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+			
+			Stock stock = new Stock();
+			stock.setCans_avail(rs.getInt("cans_avail"));
+			Date date = rs.getDate("date");
+			stock.setDate(date.toLocalDate());
+			list.add(stock);
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+		throw new DBException("Unable to View Stock",e);
+	}
+	finally {
+		ConnectionUtil.close(con, pst);
+	}
+	
+	return list;
+}
 	 public void  availStock(int cans) throws Exception
 	 {
 		 Connection con=null;

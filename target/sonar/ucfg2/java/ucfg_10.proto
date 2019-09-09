@@ -1,0 +1,53 @@
+
+5com.janu.wms.Model.Stock#toString()Ljava/lang/String;f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java   ("1*ì
+
+1f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!	 !(¸
+µ
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!" !(,
+%0java.lang.Integer"__id*,**
+com.janu.wms.Model.Stock"
+
+cans_availÂ
+¿
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!	 !(,
+%1java.lang.String"__concat*
+Stock [ canes_avail=*
+
+%0java.lang.Integer»
+¸
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!	 !(?
+%2java.lang.String"__concat*
+
+%1java.lang.String*
+, createdDate=¿
+¼
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java" "(
+%3java.time.LocalDateTime"__id*-*+
+com.janu.wms.Model.Stock"
+createdDateÈ
+Å
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!	 "(
+%4java.lang.String"__concat*
+
+%2java.lang.String*
+
+%3java.time.LocalDateTime®
+«
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java!	 "(
+%5java.lang.String"__concat*
+
+%4java.lang.String*
+]"‚
+f
+\C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\Model\Stock.java! "(
+
+%5java.lang.StringB
+com.janu.wms.Model.Stock

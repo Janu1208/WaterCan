@@ -80,10 +80,10 @@ public class UserDAO implements UserDAOImp{
 	            if (rs.next()) {
 					
 					user = new User();
-					user.setId(rs.getInt("id"));
-					user.setName(rs.getString("name"));
-					user.setPhone_number(rs.getString("Mobile_number"));
-					user.setPassword(rs.getString("Password"));
+					user.setId(rs.getInt("ID"));
+					user.setName(rs.getString("Name"));
+					user.setPhone_number(rs.getString("MobileNumber"));
+					user.setPassword(rs.getString("password"));
 					
 					
 					}

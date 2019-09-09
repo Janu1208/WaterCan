@@ -1,0 +1,17 @@
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\controller\WaterCaneSystem.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\StockDAOImp.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\util\ConnectionUtil.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\ReserveDAOImp.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\controller\OrderCan.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\controller\StockUpdate.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\model\Stock.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\validator\UserValidator.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\OrderDAO.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\OrderDAOImp.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\controller\ReserveCan.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\model\User.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\UserDAOImp.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\controller\OrderReserveCan.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\UserDAO.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\StockDAO.java
+C:\Users\sai\workspace\WaterCaneManagementSystem\src\main\java\com\janu\wms\dao\ReserveDAO.java
