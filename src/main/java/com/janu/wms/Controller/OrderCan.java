@@ -8,7 +8,6 @@ import com.janu.wms.dao.ReserveDAO;
 import com.janu.wms.dao.ReserveDAOImp;
 import com.janu.wms.dao.StockDAO;
 import com.janu.wms.dao.StockDAOImp;
-import com.janu.wms.exception.DBException;
 import com.janu.wms.model.Stock;
 import com.janu.wms.model.User;
 
@@ -66,7 +65,7 @@ public static void reserveCan(User user)
 	User u=rdao.selectReserve(User.getId());
 	if(u!=null)
 	{
-		int reservedCans=user.getCans_avail()+rCans;
+		int reservedCans=User.getCans_avail()+rCans;
 		if(reservedCans<=50)
 		{
 			rdao.updateStatus(user,reservedCans);
@@ -110,7 +109,7 @@ public static void reserveCanOrder(User user)
 
 	}
 
-    int reserveCan=u.getCans_avail();
+    int reserveCan=User.getCans_avail();
     System.out.println("Reserved cans are:"+reserveCan);
     System.out.println( );
     

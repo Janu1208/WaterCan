@@ -17,7 +17,7 @@ public class OrderDAO implements OrderDAOImp
 	PreparedStatement pst = null;
 	try {
 		pst = con.prepareStatement(sql);
-		pst.setInt(1, user.getId());
+		pst.setInt(1, User.getId());
 		pst.setInt(2,cans_avail);
 		//pst.setInt(3, User.getReserve_id());
 		pst.executeUpdate();
@@ -38,8 +38,8 @@ public void addReserveOrder(User user,int order_cans) throws DBException {
 				+ "(?,?,?) ";
 		try {
 			pst = con.prepareStatement(sql);
-			pst.setInt(1, user.getId());
-			pst.setInt(2, user.getReserve_id());
+			pst.setInt(1, User.getId());
+			pst.setInt(2, User.getReserve_id());
 			pst.setInt(3,order_cans);
 			pst.executeUpdate();
 		} catch (SQLException e) {

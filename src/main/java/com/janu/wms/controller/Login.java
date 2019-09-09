@@ -14,7 +14,8 @@ public class Login {
 	static StockDAOImp sdao=new StockDAO();
 	static UserDAOImp udao=new UserDAO();
 	static Stock stock=new Stock();
-	
+	static boolean validInput = true;
+    static int ch = 0;
 	static User user=new User();
 	static String name,password;
 	static boolean exit=false;
@@ -25,7 +26,7 @@ public class Login {
 		   System.out.println("1.Admin Login");
 		   System.out.println("2.User login");
 		   System.out.println("Enter your choice");
-		   int ch = sc.nextInt();
+		   ch = sc.nextInt();
 		   
 		   System.out.println("Enter your Name :");
 		    String name=sc.next();
@@ -33,6 +34,7 @@ public class Login {
 		    String  password=sc.next();
 		   if(name.equals("Admin")&& password.equals("$123"))
 		   {
+			   WaterCaneSystem.handleException();
 			  do{
 			   System.out.println("Welcome Admin");
 			   System.out.println("1:View stock");
@@ -57,6 +59,8 @@ public class Login {
 			  
 			   case 3:
 				     System.out.println("Thank you for choosing our services");
+					  WaterCaneSystem.waterCaneProject();
+
 				    break;
 			  
 			   default:
@@ -67,7 +71,7 @@ public class Login {
 				{
 					break;
 				}
-		   }while(true);
+		   }while(!validInput);
 		   }
 	
 		
@@ -78,6 +82,8 @@ public class Login {
 			//dao method which will checks registered name and password in database
 			
 			if(b!=null){
+				   WaterCaneSystem.handleException();
+
 			  do{
 			
 				System.out.println("Login  succesfull");
@@ -86,7 +92,8 @@ public class Login {
 				System.out.println("1.Order cans ");
 				System.out.println("2.Reserve Cans");
 				System.out.println("3.Order Reserved Cans");
-				System.out.println("4.exit");
+				System.out.println("4.Cancel ordered cans");
+				System.out.println("5.exit");
 				
 				
 				System.out.println("enter your choice");
@@ -106,7 +113,11 @@ public class Login {
 					OrderCan.reserveCanOrder(b);
 					break;
 				case 4:
+					  
+					  break;
+				case 5:
 					  System.out.println("Thank you for using our services");
+					  WaterCaneSystem.waterCaneProject();
 					  break;
 				default:
 					 System.out.println("Please choose either 1 or 2 or 3 or 4");
@@ -116,7 +127,7 @@ public class Login {
 					break;
 				}
 			  
-			}while(true);
+			}while(!validInput);
 			}
 			else{
 				System.out.println("Invalid username or password");

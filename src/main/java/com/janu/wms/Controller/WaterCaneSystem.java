@@ -4,9 +4,26 @@ import java.util.Scanner;
 
 public class WaterCaneSystem {
 	static Scanner sc = new Scanner(System.in);
-
+    static boolean validInput = true;
+    static String choice;
+    static int ch = 0;
 	public static void main(String[] args) throws Exception {
-		boolean validInput = true;
+		WaterCaneSystem.waterCaneProject();
+	}
+	public static void handleException()
+	{
+		
+		try {
+			ch = Integer.parseInt(choice);
+			validInput = true;
+		} catch (Exception e) {
+			System.out.println("Invalid Choice-..... Please try again");
+			validInput = false;
+		}
+	}
+    public  static void waterCaneProject()
+    {
+    	
 
 		do {
 			System.out.println("Welcome to Water cane management System");
@@ -15,17 +32,10 @@ public class WaterCaneSystem {
 			System.out.println("2.Login");
 			System.out.println("3.exit");
 			System.out.println("Enter choice(press 1 or 2 or 3)");
-			int ch = 0;
+			 choice= sc.next();
 
-			String choice = sc.next();
-			try {
-				ch = Integer.parseInt(choice);
-				validInput = true;
-			} catch (Exception e) {
-				System.out.println("Invalid Choice-..... Please try again");
-				validInput = false;
-			}
-
+			
+			WaterCaneSystem.handleException();
 			switch (ch) {
 			case 1:
 				Register.register(); // registration process will ve done
@@ -45,6 +55,5 @@ public class WaterCaneSystem {
 			}
 
 		} while (!validInput);
-	}
-
+    }
 }

@@ -5,7 +5,7 @@ public class User {
 	private static String name;
 	private String phone_number;
 	private static String password;
-	private int cans_avail;
+	private static int cans_avail;
 	private static int reserve_id;
 	private String status;
 	
@@ -39,7 +39,7 @@ public class User {
 	
 	
 	
-	public Integer getCans_avail() {
+	public static Integer getCans_avail() {
 		return cans_avail;
 	}
 	

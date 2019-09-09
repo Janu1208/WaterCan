@@ -16,7 +16,7 @@ public class ViewStock {
 			list = dao.viewStock();
 			for (Stock stock : list) {
 
-				System.out.println("Available cans are:" + stock.getCans_avail() + " ON " + stock.getDate());
+				System.out.println("Available cans are:" + Stock.getCans_avail() + " ON " + stock.getDate());
 
 			}
 		} catch (DBException e) {
