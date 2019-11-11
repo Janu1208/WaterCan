@@ -1,16 +1,19 @@
-package com.janu.wms.controller;
+package com.janu.wms.UI;
 
 import java.util.Scanner;
 
 public class WaterCaneSystem {
-	static Scanner sc = new Scanner(System.in);
-    static boolean validInput = true;
-    static String choice;
-    static int ch = 0;
-	public static void main(String[] args) throws Exception {
-		WaterCaneSystem.waterCaneProject();
+	  Scanner sc = new Scanner(System.in);
+	 Register  register=new Register();
+	 Login login=new Login();
+      boolean validInput = true;
+      String choice;
+      int ch = 0;
+		static WaterCaneSystem waterCan=new WaterCaneSystem();
+	public static void main(String[] args) {
+		waterCan.waterCaneProject();
 	}
-	public static void handleException()
+	public void handleException()
 	{
 		
 		try {
@@ -21,7 +24,7 @@ public class WaterCaneSystem {
 			validInput = false;
 		}
 	}
-    public  static void waterCaneProject()
+    public void waterCaneProject()
     {
     	
 
@@ -35,14 +38,14 @@ public class WaterCaneSystem {
 			 choice= sc.next();
 
 			
-			WaterCaneSystem.handleException();
+			waterCan.handleException();
 			switch (ch) {
 			case 1:
-				Register.register(); // registration process will ve done
+				register.register(); // registration process will ve done
 										// here
 				break;
 			case 2:
-				Login.login(); // login process will be done here...we will
+				login.login(); // login process will be done here...we will
 								// have admin login and user login
 				break;
 			case 3:

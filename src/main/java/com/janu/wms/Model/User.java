@@ -1,76 +1,36 @@
 package com.janu.wms.model;
 
 public class User {
-	private static int id;
-	private static String name;
-	private String phone_number;
-	private static String password;
-	private static int cans_avail;
-	private static int reserve_id;
-	private String status;
-	
-	
-	public String getStatus() {
-		return status;
+	private int id;
+	private String name;
+	private String phoneNumber;
+	private String password;
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
-	public static int getReserve_id() {
-		return reserve_id;
-	}
-
-	
-	public void setReserve_id(int reserve_id) {
-		this.reserve_id = reserve_id;
-	}
-
-	
-	
-	
-	
-
-	
-	
-	
-	
-	public static Integer getCans_avail() {
-		return cans_avail;
-	}
-	
-	public void setCans_avail(int cans_avail) {
-		this.cans_avail = cans_avail;
-	}
-	public String getPhone_number() {
-		return phone_number;
-	}
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
-	}
-
-	public static Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
-		User.id = id;
+		this.id = id;
 	}
-	public static String getName() {
+	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		User.name = name;
+		this.name = name;
 	}
 	
-	public static String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
-		User.password = password;
+		this.password = password;
 	}
 	
 

@@ -13,8 +13,8 @@ import com.janu.wms.model.Stock;
 import com.janu.wms.util.ConnectionUtil;
 
 public class StockDAO implements StockDAOImp {
-public  Stock findavaiability(){
-		
+public  int findavaiability(){
+	int availableStock = 0;
 		Connection con = ConnectionUtil.getConnection();
 		String sql = "select * from stock";
 		PreparedStatement pst = null;
@@ -25,7 +25,7 @@ public  Stock findavaiability(){
 			while(rs.next()) {
 				
 				stock = new Stock();
-				stock.setCans_avail(rs.getInt("cans_avail"));
+				availableStock=rs.getInt("cans_avail");
 				Date date = rs.getDate("date");
 				stock.setDate(date.toLocalDate());
 			}
@@ -35,7 +35,7 @@ public  Stock findavaiability(){
 		finally {
 			ConnectionUtil.close(con, pst);
 		}
-		return stock;
+		return availableStock;
 	}
 public List<Stock> viewStock() throws DBException{
 	
@@ -44,13 +44,13 @@ public List<Stock> viewStock() throws DBException{
 	List<Stock> list = new ArrayList<Stock>();
 	try {
 		con = ConnectionUtil.getConnection();
-		String sql = "select * from stockdetails";
+		String sql = "select * from stock";
 		pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()) {
 			
 			Stock stock = new Stock();
-			stock.setCans_avail(rs.getInt("cans_avail"));
+			stock.setCansAvail(rs.getInt("cans_avail"));
 			Date date = rs.getDate("date");
 			stock.setDate(date.toLocalDate());
 			list.add(stock);
@@ -65,7 +65,7 @@ public List<Stock> viewStock() throws DBException{
 	
 	return list;
 }
-	 public void  availStock(int cans) throws Exception
+	 public void  availStock(int cansAvail) throws DBException
 	 {
 		 Connection con=null;
 		  PreparedStatement pst = null;
@@ -74,28 +74,25 @@ public List<Stock> viewStock() throws DBException{
 		  try {
 		   con = ConnectionUtil.getConnection();
 		   pst = con.prepareStatement(sql);
-		   pst.setInt(1, cans);
-		  
-		   int  rows= pst.executeUpdate();
-		   System.out.println("No of rows inserted:" + rows);
-		  } catch (SQLException e) {
+		   pst.setInt(1, cansAvail);
+		  		  } catch (SQLException e) {
 		   e.printStackTrace();
-		   throw new Exception("Unable to insert " , e);
+		   throw new DBException("Unable to insert " , e);
 		  }
 		  finally {
 				ConnectionUtil.close(con, pst);
 			}
 	 }
 	 
-	 public void updateStock(int cans) {
+	 public void updateStock(int cansAvail) {
 			
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "update stock set cans_avail=? ";
+			String sql = "update stock set cans_avail=? , date =current_timestamp()";
 			PreparedStatement pst = null;
+			
 			try {
 				pst = con.prepareStatement(sql);
-				pst.setInt(1,cans);
-				pst.executeUpdate();
+				pst.setInt(1,cansAvail);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
@@ -107,4 +104,5 @@ public List<Stock> viewStock() throws DBException{
 			
 		}
 	 
+
 }

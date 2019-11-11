@@ -1,4 +1,4 @@
-package com.janu.wms.controller;
+package com.janu.wms.UI;
 
 import java.util.List;
 
@@ -8,23 +8,21 @@ import com.janu.wms.exception.DBException;
 import com.janu.wms.model.Stock;
 
 public class ViewStock {
-	public static void stockView() {
+	public void stockView() {
 
 		StockDAOImp dao = new StockDAO();
 		List<Stock> list;
 		try {
 			list = dao.viewStock();
-			for (Stock stock : list) {
+			for (Stock stocks : list) {
 
-				System.out.println("Available cans are:" + Stock.getCans_avail() + " ON " + stock.getDate());
+				System.out.println("Available cans are:" + stocks.getCansAvail() + " ON " + stocks.getDate());
 
 			}
 		} catch (DBException e) {
 
 			e.printStackTrace();
 		}
-
-		System.out.println();
 	}
 
 }

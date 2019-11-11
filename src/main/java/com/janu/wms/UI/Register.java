@@ -1,4 +1,4 @@
-package com.janu.wms.controller;
+package com.janu.wms.UI;
 
 import java.util.Scanner;
 
@@ -8,19 +8,21 @@ import com.janu.wms.dao.UserDAO;
 import com.janu.wms.dao.UserDAOImp;
 import com.janu.wms.model.Stock;
 import com.janu.wms.model.User;
+import com.janu.wms.service.UserServices;
 import com.janu.wms.validator.UserValidator;
 
 public class Register {
-	static Scanner sc=new Scanner(System.in);
-	static StockDAOImp sdao=new StockDAO();
-	static UserDAOImp udao=new UserDAO();
-	static Stock stock=new Stock();
-	
-	static User user=new User();
-	static String name,password;
-	static boolean exit=false;
-	static int cans;
-	static User register() {
+	  Scanner sc=new Scanner(System.in);
+	 StockDAOImp sdao=new StockDAO();
+	 UserDAOImp udao=new UserDAO();
+	 Stock stock=new Stock();
+	Login login=new Login();
+	 User user=new User();
+	  String name;
+	 String password;
+	 boolean exit=false;
+	 int cans;
+	  User register() {
 		   
 		   System.out.println("Welcome to register page");
 		   boolean b=false;
@@ -50,14 +52,14 @@ public class Register {
 		   
 	       
 	       user.setName(name);
-	       user.setPhone_number(phone_number);
+	       user.setPhoneNumber(phone_number);
 	       user.setPassword(password);
 	       System.out.println(user);
-		   while(b==false)
+		   if(b==true)
 		   {
 		   try{
-		   UserValidator.passwordValidation(name, password);
-	       udao.register(user); // registered users details will insert into User_det table
+			   UserServices us=new UserServices();
+		   us.register(user);
 	       b=true;
 		   }
 		   catch(Exception e)
@@ -69,7 +71,7 @@ public class Register {
 		   }
 		   System.out.println("------REGISTERED SUCCESSFULLY-------");
 			try {
-				user=Login.login();
+				user=login.login();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

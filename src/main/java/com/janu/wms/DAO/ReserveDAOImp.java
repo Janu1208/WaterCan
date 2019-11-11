@@ -1,11 +1,17 @@
 package com.janu.wms.dao;
 
-import com.janu.wms.model.User;
+import java.sql.SQLException;
+
+import com.janu.wms.exception.DBException;
+import com.janu.wms.model.Reserve;
 
 public interface ReserveDAOImp {
-	  public void addReserveCans(User user,int reserve_cans);
-		public void updateReserveCans(User user,int reserve_cans);
-		public User selectReserve(int reserve_id);
-		   public void updateStatus(User user,int order_cans);
+	 public int addReserveCans(Reserve reserve,int reserveCans) throws DBException;
+	  public int ReserveId(Reserve reserve);
+	  public int updateReserveCans(Reserve reserve,int reserveCans) throws SQLException;
+	  public Reserve selectReserve(int userId) throws SQLException;
+	  public void updateStatus(Reserve reserve,int reserveCans) throws SQLException;
+	  public int getReserveCans(int userId);
+	  public int findById(int id) throws SQLException;
 
 }

@@ -1,8 +1,13 @@
 package com.janu.wms.dao;
 
-import com.janu.wms.model.User;
+import java.sql.SQLException;
+
+import com.janu.wms.exception.DBException;
+import com.janu.wms.model.Order;
+import com.janu.wms.model.Reserve;
 
 public interface OrderDAOImp {
-	public void addOrder(User user,int cans_avail);
-	public  void addReserveOrder(User user,int order_cans) throws Exception;
-}
+	public void addOrder(Order order,int cansAvail) throws DBException;
+	public void addReserveOrder(Reserve reserve,int reserveCanValue) throws SQLException;
+	public void modifiedReservedCan(Reserve reserve, int reserveCan) throws DBException;
+	}

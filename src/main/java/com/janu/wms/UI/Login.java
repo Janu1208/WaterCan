@@ -1,4 +1,4 @@
-package com.janu.wms.controller;
+package com.janu.wms.UI;
 
 import java.util.Scanner;
 
@@ -8,19 +8,22 @@ import com.janu.wms.dao.UserDAO;
 import com.janu.wms.dao.UserDAOImp;
 import com.janu.wms.model.Stock;
 import com.janu.wms.model.User;
+import com.janu.wms.service.UserServices;
 
 public class Login {
-	static Scanner sc=new Scanner(System.in);
-	static StockDAOImp sdao=new StockDAO();
-	static UserDAOImp udao=new UserDAO();
-	static Stock stock=new Stock();
-	static boolean validInput = true;
-    static int ch = 0;
-	static User user=new User();
-	static String name,password;
-	static boolean exit=false;
-	static int cans;
-	static User login() {
+	ViewStock viewStock=new ViewStock();
+	User users=new User();
+	 Scanner sc=new Scanner(System.in);
+	 StockDAOImp sdao=new StockDAO();
+	 UserDAOImp udao=new UserDAO();
+	 Stock stock=new Stock();
+	 boolean validInput = true;
+    int ch = 0;
+	 User user=new User();
+	 String name,password;
+	 boolean exit=false;
+	 int cans;
+	 User login() {
 		
 		   System.out.println("Welcome to Login Page");
 		   System.out.println("1.Admin Login");
@@ -48,7 +51,7 @@ public class Login {
 			   switch(ch4)
 			   {
 			   case 1:
-				  ViewStock.stockView();
+				   viewStock.stockView();
 					break;
 			   case 2:
 				  
@@ -78,9 +81,8 @@ public class Login {
 		   else{	  
 		    
 		   try {
-			User b= udao.login(name,password);
-			//dao method which will checks registered name and password in database
-			
+			   UserServices us=new UserServices();
+			   User b=us.login(name,password);
 			if(b!=null){
 				   WaterCaneSystem.handleException();
 
@@ -137,7 +139,7 @@ public class Login {
          e.printStackTrace();
 		   }	
 		   user=udao.getUserID(name);
-			System.out.println("Your User id is:"+User.getId());
+			System.out.println("Your User id is:"+users.getId());
 			
 		   }
 		return user;		
